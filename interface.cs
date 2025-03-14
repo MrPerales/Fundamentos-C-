@@ -28,16 +28,16 @@ public class Sale : ISale, ISave
     public decimal Total { get; set; }
     public void Save()
     {
-        Console.WriteLine('Se Guardo ');
-    };
+        Console.WriteLine("Se Guardo ");
+    }
 
 }
 
-public class Beer : ISale
+public class Beer : ISave
 {
     public void Save()
     {
-        Console.WriteLine('Se Guardo en servicio ');
-    };
+        Console.WriteLine("Se Guardo en servicio ");
+    }
 
 }
