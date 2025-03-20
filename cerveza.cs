@@ -5,7 +5,7 @@ namespace CervezaClass
     {
         // implementamos atributo de la interfaz 
         public int Alcohol { get; set; }
-
+        public string Marca { get; set; }
         public void MaxRecomendado()
         {
             Console.WriteLine("El maximo recomendado es 10");
