@@ -5,16 +5,42 @@ class Program
 {
     static void Main()
     {
+
         CervezaBD cervezaBD = new CervezaBD();
+
+        // agregamos una Cerveza 
+        // {} hack para crear un scope distinto 
+        // {
+        //     var cerveza = new Cerveza(2, "Pale ale");
+        //     cerveza.Marca = "minerva";
+        //     cerveza.Alcohol = 6;
+        //     cervezaBD.Add(cerveza);
+        // }
+        /////////////////////
+        ///editamos una cerveza 
+        // {
+        //     var cerveza = new Cerveza(5, "Pale ale");
+        //     cerveza.Marca = "minerva";
+        //     cerveza.Alcohol = 5;
+        //     cervezaBD.Edit(cerveza, 40);
+        // }
+
+        ////////////////////////////
+        ///eliminamos una cervez 
+        {
+            cervezaBD.Delete(40);
+        }
+
+        // Obtenemos todas las cervezas 
         var cervezas = cervezaBD.Get();
         foreach (var item in cervezas)
         {
             Console.WriteLine(item.Name);
 
         }
-        Console.WriteLine("-------------------------------");
+        // Console.WriteLine("-------------------------------");
 
-        Console.WriteLine(cervezas);
+        // Console.WriteLine(cervezas);
     }
 }
 
@@ -75,4 +101,70 @@ class CervezaBD
         return cervezas;
 
     }
+
+    public void Add(Cerveza cerveza)
+    {
+        // se escriben con "@..." por proteccion 
+        string query = "INSERT into cerveza (id ,nombre ,marca,alcohol,cantidad) " +
+        "VALUES (@id,@nombre,@marca,@alcohol,@cantidad);";
+
+        using (var connection = new SqlConnection(connectionString))
+        {
+
+            var command = new SqlCommand(query, connection);
+            var randomId = new Random().Next(0, 100); //solo por fines practicos el id :S
+            // mandamos los valores 
+            command.Parameters.AddWithValue("@id", randomId);
+            command.Parameters.AddWithValue("@nombre", cerveza.Name);
+            command.Parameters.AddWithValue("@marca", cerveza.Marca);
+            command.Parameters.AddWithValue("@alcohol", cerveza.Alcohol);
+            command.Parameters.AddWithValue("@cantidad", cerveza.Cantidad);
+
+
+
+            connection.Open();
+
+            command.ExecuteNonQuery();//ejecutamos el query 
+
+            connection.Close();
+
+        }
+    }
+    public void Edit(Cerveza cerveza, int id)
+    {
+        string query = "update cerveza set" +
+            " nombre=@nombre,marca=@marca," +
+            "alcohol=@alcohol,cantidad=@cantidad " +
+            "where id=@id";
+
+        using (var connection = new SqlConnection(connectionString))
+        {
+            var command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@id", id);
+            command.Parameters.AddWithValue("@nombre", cerveza.Name);
+            command.Parameters.AddWithValue("@marca", cerveza.Marca);
+            command.Parameters.AddWithValue("@alcohol", cerveza.Alcohol);
+            command.Parameters.AddWithValue("@cantidad", cerveza.Cantidad);
+
+            connection.Open();
+
+            command.ExecuteNonQuery();//ejecutamos el query 
+
+            connection.Close();
+        }
+    }
+    public void Delete(int id)
+    {
+        string query = "delete from cerveza where id=@id";
+
+        using (var connection = new SqlConnection(connectionString))
+        {
+            var command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@id", id);
+            connection.Open();
+            command.ExecuteNonQuery();
+            connection.Close();
+        }
+    }
+
 }
