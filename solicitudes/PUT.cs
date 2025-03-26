@@ -1,39 +1,39 @@
-using System.Text.Json;
-using ClassPost;
+// using System.Text.Json;
+// using ClassPost;
 
-class Program
-{
-    static async Task Main()
-    {
-        // cambiamos el endpoint para hacer put 
-        string url = "https://jsonplaceholder.typicode.com/posts/98";
+// class Program
+// {
+//     static async Task Main()
+//     {
+//         // cambiamos el endpoint para hacer put 
+//         string url = "https://jsonplaceholder.typicode.com/posts/98";
 
-        var client = new HttpClient();
+//         var client = new HttpClient();
 
-        Post post = new Post()
-        {
-            body = "other body",
-            title = "other new title"
-        };
+//         Post post = new Post()
+//         {
+//             body = "other body",
+//             title = "other new title"
+//         };
 
-        // serializamos 
-        var data = JsonSerializer.Serialize<Post>(post);
+//         // serializamos 
+//         var data = JsonSerializer.Serialize<Post>(post);
 
-        // mandamos los datos faltates 
-        var content = new StringContent(data, System.Text.Encoding.UTF8, "application/json");
+//         // mandamos los datos faltates 
+//         var content = new StringContent(data, System.Text.Encoding.UTF8, "application/json");
 
-        // hacemos peticion PUT 
-        var httpResponse = await client.PutAsync(url, content);
+//         // hacemos peticion PUT 
+//         var httpResponse = await client.PutAsync(url, content);
 
-        if (httpResponse.IsSuccessStatusCode)
-        {
-            // respuesta del endpoint 
-            var result = await httpResponse.Content.ReadAsStringAsync();
+//         if (httpResponse.IsSuccessStatusCode)
+//         {
+//             // respuesta del endpoint 
+//             var result = await httpResponse.Content.ReadAsStringAsync();
 
-            var putResult = JsonSerializer.Deserialize<Post>(result);
+//             var putResult = JsonSerializer.Deserialize<Post>(result);
 
 
-        }
+//         }
 
-    }
-}
+//     }
+// }
