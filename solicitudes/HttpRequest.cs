@@ -8,6 +8,7 @@ namespace Fundamentos.solicitudes
         private HttpClient _client = new HttpClient();
         private string _url = "https://jsonplaceholder.typicode.com/posts";
 
+
         public async Task<T> Get()
         {
             var httpResponse = await _client.GetAsync(_url);
@@ -15,8 +16,12 @@ namespace Fundamentos.solicitudes
             if (httpResponse.IsSuccessStatusCode)
             {
                 var content = await httpResponse.Content.ReadAsStringAsync();
-                var posts = JsonSerializer.Deserialize<T>(content);
-
+                var posts = JsonSerializer.Deserialize<T>(content,
+                    new JsonSerializerOptions()
+                    {
+                        PropertyNameCaseInsensitive = true //para ignorar las mayusculas de C# de la clase y las minusculas del servicio 
+                    }
+                );
                 // foreach (var post in posts)
                 // {
                 //     Console.WriteLine($"Id: {post.id}, UserId: {post.userID}, Title: {post.title}, Body: {post.body}");
@@ -44,7 +49,10 @@ namespace Fundamentos.solicitudes
                 // leemos el contenido que nos regresa la peticion 
                 var result = await httpResponse.Content.ReadAsStringAsync();
                 // deserializamos para poder usarlo en C# 
-                var postResult = JsonSerializer.Deserialize<T>(result);
+                var postResult = JsonSerializer.Deserialize<T>(result, new JsonSerializerOptions()
+                {
+                    PropertyNameCaseInsensitive = true
+                });
                 return postResult;
             }
             return default(T);
@@ -62,7 +70,10 @@ namespace Fundamentos.solicitudes
                 // respuesta del endpoint 
                 var result = await httpResponse.Content.ReadAsStringAsync();
 
-                var putResult = JsonSerializer.Deserialize<T>(result);
+                var putResult = JsonSerializer.Deserialize<T>(result, new JsonSerializerOptions()
+                {
+                    PropertyNameCaseInsensitive = true
+                });
                 return putResult;
             }
             return default(T);
@@ -74,7 +85,10 @@ namespace Fundamentos.solicitudes
             if (httpResponse.IsSuccessStatusCode)
             {
                 var result = await httpResponse.Content.ReadAsStringAsync();
-                var deleteResult = JsonSerializer.Deserialize<T>(result);
+                var deleteResult = JsonSerializer.Deserialize<T>(result, new JsonSerializerOptions()
+                {
+                    PropertyNameCaseInsensitive = true
+                });
 
                 return deleteResult;
             }
