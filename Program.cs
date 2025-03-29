@@ -1,11 +1,15 @@
-﻿using Fundamentos.conectionDB;
+﻿using System.Threading.Tasks;
+using CervezaClass;
+using ClassPost;
+using Fundamentos.conectionDB;
 using Fundamentos.lamdba;
+using Fundamentos.solicitudes;
 
 namespace Fundamentos
 {
     class Program
     {
-        static void Main()
+        static async Task Main()
         {
             // lambda 
             // lambdaExamples suma = new lambdaExamples();
@@ -48,6 +52,22 @@ namespace Fundamentos
             // }
             Console.WriteLine("-------------------------------");
 
+            // Ejemplos para generics
+
+            // ??????????????
+            // var cerveza = new Cerveza(2, "---")
+            // {
+            //     Alcohol = 5,
+            //     Marca = "---",
+            //     Name = "-----",
+            //     Cantidad = 1
+            // };
+            // ?????????????????????? 
+            // var serviceCerveza= new SendRequest<Cerveza>(); // ya no es posible usar el tipo de clase Cerveza porque no implementa la interfaz IRequest
+
+            var post = new Post() { };
+            var service = new SendRequest<Post>();
+            var resp = await service.Post(post);
 
         }
     }

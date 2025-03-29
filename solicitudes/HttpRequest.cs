@@ -2,8 +2,9 @@ using System.Text.Json;
 
 namespace Fundamentos.solicitudes
 {
-
-    class SendRequest<T>
+    // Para proteger un poco el Generic y que no se pueda usar cualquier tipo de clase le agregamos 
+    // la restriccion de que solo se pueda usar una clase que implemente la interfaz IRequest
+    public class SendRequest<T> where T : IRequest
     {
         private HttpClient _client = new HttpClient();
         private string _url = "https://jsonplaceholder.typicode.com/posts";

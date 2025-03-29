@@ -1,7 +1,7 @@
 namespace ClassPost
 {
 
-    public class Post
+    public class Post : IRequest
     {
         public int UserID { set; get; }
 
