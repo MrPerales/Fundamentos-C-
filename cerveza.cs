@@ -1,7 +1,7 @@
 namespace CervezaClass
 {
 
-    class Cerveza : IBebidaAlcoholica
+    public class Cerveza : IBebidaAlcoholica
     {
         // implementamos atributo de la interfaz 
         public int Alcohol { get; set; }
