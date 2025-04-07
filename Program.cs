@@ -3,6 +3,7 @@ using CervezaClass;
 using ClassPost;
 using Fundamentos.conectionDB;
 using Fundamentos.lamdba;
+using Fundamentos.Linq;
 using Fundamentos.solicitudes;
 
 namespace Fundamentos
@@ -51,6 +52,7 @@ namespace Fundamentos
 
             // }
             Console.WriteLine("-------------------------------");
+            /////////////////////////////////////////////////////////////////// 
 
             // Ejemplos para generics
 
@@ -65,10 +67,31 @@ namespace Fundamentos
             // ?????????????????????? 
             // var serviceCerveza= new SendRequest<Cerveza>(); // ya no es posible usar el tipo de clase Cerveza porque no implementa la interfaz IRequest
 
-            var post = new Post() { };
-            var service = new SendRequest<Post>();
-            var resp = await service.Post(post);
+            // var post = new Post() { };
+            // var service = new SendRequest<Post>();
+            // var resp = await service.Post(post);
+            // Console.WriteLine(resp.Title);
 
+            Console.WriteLine("-------------------------------");
+            /////////////////////////////////////////////////////////////////// 
+
+
+            ////////////
+            // LINQ 
+            ////
+            // Consulta consulta = new Consulta();
+
+            // List<string> sql = consulta.GetLikeSql();
+            // var cSharp = consulta.GetLikeCSharp();
+            // Console.WriteLine(sql);
+
+            // LINQ COMPLEJO
+            // var bar = new LINQComplejo();
+            // var bares = bar.GetBarsWithEspecificBeer();
+            // foreach (var item in bares)
+            // {
+            //     Console.WriteLine(item.cervezas[0].Name);
+            // }
         }
     }
 }
