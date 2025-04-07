@@ -19,8 +19,8 @@
 // Console.WriteLine(carlosJson?.Name);
 // Console.WriteLine(carlosJson?.Age);
 
-// public class People
-// {
-//     public string Name { get; set; }
-//     public int Age { get; set; }
-// }
+public class People
+{
+    public string Name { get; set; }
+    public int Age { get; set; }
+}

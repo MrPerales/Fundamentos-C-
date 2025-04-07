@@ -1,3 +1,5 @@
+using Fundamentos.Interfaces;
+
 namespace VinoClass
 {
 

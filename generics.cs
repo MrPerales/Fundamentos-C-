@@ -1,22 +1,22 @@
-// generics 
-// pueden recibir cualquier tipo de dato 
-var numbers = new MyList<int>(5);
-var names = new MyList<string>(5);
-var beers = new MyList<Beer>(2);
+// // generics 
+// // pueden recibir cualquier tipo de dato 
+// var numbers = new MyList<int>(5);
+// var names = new MyList<string>(5);
+// var beers = new MyList<Beer>(2);
 
-numbers.Add(1);
-numbers.Add(2);
-numbers.Add(3);
-// Console.WriteLine(numbers.GetContent());
+// numbers.Add(1);
+// numbers.Add(2);
+// numbers.Add(3);
+// // Console.WriteLine(numbers.GetContent());
 
-names.Add("carlos");
-names.Add("carlos1");
-names.Add("carlos2");
-names.Add("carlos3");
-// Console.WriteLine(names.GetContent());
-// usamos el new Beer para crear un objeto de tipo beer ya que no lo hemos creado
-beers.Add(new Beer() { Name = "Modelo", Price = 15 });
-beers.Add(new Beer() { Name = "corona", Price = 15 });
+// names.Add("carlos");
+// names.Add("carlos1");
+// names.Add("carlos2");
+// names.Add("carlos3");
+// // Console.WriteLine(names.GetContent());
+// // usamos el new Beer para crear un objeto de tipo beer ya que no lo hemos creado
+// beers.Add(new Beer() { Name = "Modelo", Price = 15 });
+// beers.Add(new Beer() { Name = "corona", Price = 15 });
 
 // Console.WriteLine(beers.GetContent());
 
