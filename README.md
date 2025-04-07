@@ -1,6 +1,6 @@
 # 🌟 Proyecto: Fundamentos de C#
 
-📖 Descripción
+📖
 Este proyecto explora los fundamentos de la programación en C#, demostrando características clave del lenguaje y sus capacidades. El objetivo principal es proporcionar ejemplos prácticos y funcionales de conceptos como interfaces, conexiones a bases de datos, LINQ, genéricos, arreglos con listas, expresiones lambda, y técnicas de serialización y deserialización.
 
 # ✨ Características principales
